@@ -11,16 +11,13 @@ public class DemoController {
 
     // define a private field for the dependency
     private final Coach myCoach;
-    private final Coach anotherCoach;
 
     // define a constructor for dependency injection
     @Autowired
     public DemoController(
-            @Qualifier("cricketCoach") Coach theCoach,
-            @Qualifier("cricketCoach") Coach theAnotherCoach){
+            @Qualifier("cricketCoach") Coach theCoach){
         System.out.println("In Constructor: "+getClass().getSimpleName());
         myCoach= theCoach;
-        anotherCoach = theAnotherCoach;
     }
 
     @GetMapping("/dailyworkout")
@@ -28,10 +25,4 @@ public class DemoController {
         return myCoach.getDailyWorkout();
     }
 
-    // All beans are Singleton unless you change that using scope
-    @GetMapping("/check")
-    public String check(){
-        // when we set scope as SCOPE_PROTOTYPE for CricketCoach then this will return false
-        return "Comparing beans: myCoach and anotherCoach, "+(myCoach==anotherCoach);
-    }
 }
