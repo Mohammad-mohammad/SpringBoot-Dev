@@ -2,6 +2,7 @@ package com.moha.springcoredemo.rest;
 
 import com.moha.springcoredemo.common.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
     // define a private field for the dependency
-    private Coach myCoach;
+    private final Coach myCoach;
 
-    // we can call it any method name we want - @Autowired what's matter here
+    // define a constructor for dependency injection
     @Autowired
-    public void setCoach(Coach theCoach){
+    public DemoController(@Qualifier("trackCoach") Coach theCoach){
         myCoach= theCoach;
     }
 
