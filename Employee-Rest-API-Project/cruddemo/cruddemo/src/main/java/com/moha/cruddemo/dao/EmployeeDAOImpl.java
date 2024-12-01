@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO{
 
-    private EntityManager entityManager;
+    private final EntityManager entityManager;
 
     @Autowired
     public EmployeeDAOImpl(EntityManager entityManager) {
@@ -23,4 +23,21 @@ public class EmployeeDAOImpl implements EmployeeDAO{
         TypedQuery<Employee> theQuery = entityManager.createQuery("From Employee", Employee.class);
         return theQuery.getResultList();
     }
+
+    @Override
+    public Employee findById(int theId) {
+        return entityManager.find(Employee.class, theId);
+    }
+
+    @Override
+    public Employee save(Employee theEmployee) {
+        return entityManager.merge(theEmployee);
+    }
+
+    @Override
+    public void deleteById(int theId) {
+        Employee employee = entityManager.find(Employee.class, theId);
+        entityManager.remove(employee);
+    }
+
 }
