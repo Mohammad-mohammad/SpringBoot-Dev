@@ -1,11 +1,14 @@
 package com.moha.springboot.thymeleafdemo.model;
 
+import java.util.List;
+
 public class Student {
 
     private String firstName;
     private String lastName;
     private String country;
     private String favoriteLanguage;
+    private List<String> favoriteSystems;
 
     public Student() {
     }
@@ -47,6 +50,14 @@ public class Student {
         this.favoriteLanguage = favoriteLanguage;
     }
 
+    public List<String> getFavoriteSystems() {
+        return favoriteSystems;
+    }
+
+    public void setFavoriteSystems(List<String> favoriteSystems) {
+        this.favoriteSystems = favoriteSystems;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -54,6 +65,7 @@ public class Student {
                 ", lastName='" + lastName + '\'' +
                 ", country='" + country + '\'' +
                 ", favoriteLanguage='" + favoriteLanguage + '\'' +
+                ", favoriteSystems=" + favoriteSystems +
                 '}';
     }
 }
