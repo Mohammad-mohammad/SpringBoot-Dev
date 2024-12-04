@@ -1,5 +1,7 @@
 package com.moha.springdemo.mvc;
 
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -10,6 +12,18 @@ public class Customer {
     @NotNull(message = "is required")
     @Size(min = 1, message = "is required")
     private String lastName="";
+
+    @Min(value = 0,message = "must be grater or equal to zero")
+    @Max(value = 10, message = "must be less or equal to ten")
+    private int freePasses;
+
+    public int getFreePasses() {
+        return freePasses;
+    }
+
+    public void setFreePasses(int freePasses) {
+        this.freePasses = freePasses;
+    }
 
     public String getLastName() {
         return lastName;
