@@ -22,6 +22,18 @@
     </p>
 
     <hr>
+    <p>
+        <a th:href="@{/leaders}">Leadership Meeting</a>
+        (Only for manager peeps)
+    </p>
+
+    <hr>
+    <p>
+        <a th:href="@{/systems}">IT Systems Meeting</a>
+        (Only for admin peeps)
+    </p>
+
+    <hr>
     <form action="#" th:action="@{/logout}" method="POST">
         <input type="submit" value="Logout" />
     </form>
