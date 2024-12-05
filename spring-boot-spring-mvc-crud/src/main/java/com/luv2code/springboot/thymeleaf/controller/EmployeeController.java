@@ -25,6 +25,6 @@ public class EmployeeController {
     public String listEmployees(Model model){
         List<Employee> theEmployees = employeeService.findAll();
         model.addAttribute("employees", theEmployees);
-        return "list-employees";
+        return "employees/list-employees";
     }
 }
