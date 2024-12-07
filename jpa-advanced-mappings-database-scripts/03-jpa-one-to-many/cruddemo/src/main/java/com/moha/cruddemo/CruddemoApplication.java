@@ -29,8 +29,25 @@ public class CruddemoApplication {
 
 			//deleteInstructorDetail(appDAO);
 
-			createInstructorWithCourses(appDAO);
+			//createInstructorWithCourses(appDAO);
+
+			findInstructorWithCourses(appDAO);
 		};
+	}
+
+	private void findInstructorWithCourses(AppDAO appDAO) {
+		int id=1;
+		System.out.println("Finding instructor id: "+ id);
+		Instructor instructor = appDAO.findInstructorById(id);
+
+		System.out.println("instructor: "+ instructor );
+
+		// Unless you explicitly define an eager fetch,
+		// this will throw an exception because of fitch type default lazy
+		System.out.println("the associated courses: "+ instructor.getCourses());
+
+		System.out.println("Done!");
+
 	}
 
 	private void createInstructorWithCourses(AppDAO appDAO) {
