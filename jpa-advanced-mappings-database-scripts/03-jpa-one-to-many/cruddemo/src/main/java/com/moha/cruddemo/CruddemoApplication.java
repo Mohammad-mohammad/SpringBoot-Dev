@@ -1,6 +1,7 @@
 package com.moha.cruddemo;
 
 import com.moha.cruddemo.dao.AppDAO;
+import com.moha.cruddemo.entity.Course;
 import com.moha.cruddemo.entity.Instructor;
 import com.moha.cruddemo.entity.InstructorDetail;
 import org.springframework.boot.CommandLineRunner;
@@ -26,8 +27,32 @@ public class CruddemoApplication {
 
 			//findInstructorDetail(appDAO);
 
-			deleteInstructorDetail(appDAO);
+			//deleteInstructorDetail(appDAO);
+
+			createInstructorWithCourses(appDAO);
 		};
+	}
+
+	private void createInstructorWithCourses(AppDAO appDAO) {
+
+		Instructor instructor = new Instructor("Suzan", "Patel", "patel@gmail.com");
+
+		InstructorDetail instructorDetail = new InstructorDetail("http://www.youtube.com", "video games");
+		instructor.setInstructorDetail(instructorDetail);
+
+		Course course1 = new Course("Air Guitar - the ultimate guid");
+		Course course2 = new Course("Air Pinball master class");
+		instructor.add(course1);
+		instructor.add(course2);
+
+		// save the instructor
+		// Note: this will also save the courses
+		// because of CascadeType.PERSIST
+		System.out.println("Saving instructor: "+ instructor);
+		System.out.println("The courses: "+ instructor.getCourses());
+		appDAO.save(instructor);
+		System.out.println("Done!");
+
 	}
 
 	private void deleteInstructorDetail(AppDAO appDAO) {
