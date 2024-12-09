@@ -3,6 +3,7 @@ package com.moha.cruddemo.dao;
 import com.moha.cruddemo.entity.Course;
 import com.moha.cruddemo.entity.Instructor;
 import com.moha.cruddemo.entity.InstructorDetail;
+import com.moha.cruddemo.entity.Review;
 
 import java.util.List;
 
@@ -29,5 +30,9 @@ public interface AppDAO {
     Course findCourseById(int id);
 
     void deleteCourseById(int id);
+
+    void save(Course course);
+
+    Course findCourseAndReviewsByCourseId(int id);
 
 }
