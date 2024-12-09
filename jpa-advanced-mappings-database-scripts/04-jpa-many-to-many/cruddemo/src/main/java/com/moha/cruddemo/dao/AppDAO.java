@@ -1,9 +1,6 @@
 package com.moha.cruddemo.dao;
 
-import com.moha.cruddemo.entity.Course;
-import com.moha.cruddemo.entity.Instructor;
-import com.moha.cruddemo.entity.InstructorDetail;
-import com.moha.cruddemo.entity.Review;
+import com.moha.cruddemo.entity.*;
 
 import java.util.List;
 
@@ -36,5 +33,7 @@ public interface AppDAO {
     Course findCourseAndReviewsByCourseId(int id);
 
     Course findCourseAndStudentsByCourseId(int id);
+
+    Student findStudentAndCoursesByStudentId(int id);
 
 }
