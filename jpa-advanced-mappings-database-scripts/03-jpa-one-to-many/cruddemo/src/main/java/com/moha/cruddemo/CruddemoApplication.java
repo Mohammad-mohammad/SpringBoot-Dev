@@ -41,7 +41,9 @@ public class CruddemoApplication {
 
 			//updateInstructor(appDAO);
 
-			updateCourse(appDAO);
+			//updateCourse(appDAO);
+
+			deleteInstructor(appDAO);
 		};
 	}
 
