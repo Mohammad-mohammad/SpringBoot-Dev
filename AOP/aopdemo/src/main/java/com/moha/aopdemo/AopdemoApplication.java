@@ -28,32 +28,41 @@ public class AopdemoApplication {
 		accountDAO.addAccount(account, true);
 		accountDAO.doWork();
 
+		accountDAO.setName("Hello");
+		accountDAO.setServiceCode("Silver");
+
+		String name = accountDAO.getName();
+		String serviceCode = accountDAO.getServiceCode();
+
 		membershipDAO.addAccount();
 		membershipDAO.goToSleep();
 
 
 		// Result:
 		/*
-		    =======>>>> Executing @Before advice on method
+		=======>>>> Executing @Before advice on method
 
-			======>>>> Performing API Analytics
-			class com.moha.aopdemo.dao.AccountDAOImpl: Doing my DB work - Adding an account.
+		======>>>> Performing API Analytics
+		class com.moha.aopdemo.dao.AccountDAOImpl: Doing my DB work - Adding an account.
 
-			=======>>>> Executing @Before advice on method
+		=======>>>> Executing @Before advice on method
 
-			======>>>> Performing API Analytics
-			class com.moha.aopdemo.dao.AccountDAOImpl: Doing my work.
+		======>>>> Performing API Analytics
+		class com.moha.aopdemo.dao.AccountDAOImpl: Doing my work.
+		class com.moha.aopdemo.dao.AccountDAOImpl: set Name
+		class com.moha.aopdemo.dao.AccountDAOImpl: set Service code
+		class com.moha.aopdemo.dao.AccountDAOImpl: get Name
+		class com.moha.aopdemo.dao.AccountDAOImpl: get Service code
 
-			=======>>>> Executing @Before advice on method
+		=======>>>> Executing @Before advice on method
 
-			======>>>> Performing API Analytics
-			class com.moha.aopdemo.dao.MembershipDAOImpl: Doing my DB work - Adding an membership.
+		======>>>> Performing API Analytics
+		class com.moha.aopdemo.dao.MembershipDAOImpl: Doing my DB work - Adding an membership.
 
-			=======>>>> Executing @Before advice on method
+		=======>>>> Executing @Before advice on method
 
-			======>>>> Performing API Analytics
-			class com.moha.aopdemo.dao.MembershipDAOImpl: I am going to sleep now...
-
+		======>>>> Performing API Analytics
+		class com.moha.aopdemo.dao.MembershipDAOImpl: I am going to sleep now...
 
 		*/
 	}
