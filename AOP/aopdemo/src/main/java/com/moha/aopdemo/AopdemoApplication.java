@@ -24,17 +24,16 @@ public class AopdemoApplication {
 
 	private void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO) {
 
-		accountDAO.addAccount();
+		Account account = new Account();
+		accountDAO.addAccount(account);
 
 		membershipDAO.addAccount();
 
 		// Result:
 		/*
-			=======>>>> Executing @Before advice on AddAccount()
+			=======>>>> Executing @Before advice on method
 			class com.moha.aopdemo.dao.AccountDAOImpl: Doing my DB work - Adding an account.
-
-			=======>>>> Executing @Before advice on AddAccount()
-			class com.moha.aopdemo.dao.MembershipDAOImpl: Doing my DB work - Adding an membership.
+		   	class com.moha.aopdemo.dao.MembershipDAOImpl: Doing my DB work - Adding a membership.
 		*/
 	}
 
