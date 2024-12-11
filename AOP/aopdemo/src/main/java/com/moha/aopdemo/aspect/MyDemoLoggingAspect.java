@@ -28,6 +28,16 @@ public class MyDemoLoggingAspect {
         System.out.println("Method: "+ joinPoint.getSignature().toShortString());
 
         System.out.println("Returning Value: "+result);
+
+        convertAccountsNamesToUpperCase(result);
+    }
+
+    private void convertAccountsNamesToUpperCase(List<Account> result) {
+
+        for (Account account : result){
+            account.setName(account.getName().toUpperCase());
+        }
+
     }
 
     @Before("com.moha.aopdemo.aspect.AopExpression.forDaoPackageNoGetterSetter()")

@@ -66,7 +66,8 @@ public class AopdemoApplication {
 
 
 		Main program: demoTheAfterReturningAdvice:
-		[Account{name='John', level='Silver'}, Account{name='Mary', level='Gold'}, Account{name='Peter', level='Platinum'}]
+		[Account{name='JOHN', level='Silver'}, Account{name='MARY', level='Gold'}, Account{name='PETER', level='Platinum'}]
+		, Account{name='Peter', level='Platinum'}]
 
 		*/
 	}
