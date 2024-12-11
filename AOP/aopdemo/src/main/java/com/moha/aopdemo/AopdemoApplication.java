@@ -26,16 +26,26 @@ public class AopdemoApplication {
 
 		Account account = new Account();
 		accountDAO.addAccount(account, true);
+		accountDAO.doWork();
 
 		membershipDAO.addAccount();
+		membershipDAO.goToSleep();
+
 
 		// Result:
 		/*
 		    =======>>>> Executing @Before advice on method
 		    class com.moha.aopdemo.dao.AccountDAOImpl: Doing my DB work - Adding an account.
-			
-			=======>>>> Executing @Before advice on method
-		   	class com.moha.aopdemo.dao.MembershipDAOImpl: Doing my DB work - Adding an membership.
+
+		    =======>>>> Executing @Before advice on method
+		    class com.moha.aopdemo.dao.AccountDAOImpl: Doing my work.
+
+		    =======>>>> Executing @Before advice on method
+		    class com.moha.aopdemo.dao.MembershipDAOImpl: Doing my DB work - Adding an membership.
+
+		    =======>>>> Executing @Before advice on method
+		    class com.moha.aopdemo.dao.MembershipDAOImpl: I am going to sleep now...
+
 		*/
 	}
 
