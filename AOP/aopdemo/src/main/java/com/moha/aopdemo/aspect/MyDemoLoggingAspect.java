@@ -2,14 +2,23 @@ package com.moha.aopdemo.aspect;
 
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
 public class MyDemoLoggingAspect {
 
-    @Before("execution(* com.moha.aopdemo.dao.*.*(..))")
+    @Pointcut("execution(* com.moha.aopdemo.dao.*.*(..))")
+    public void forDaoPackage(){}
+
+    @Before("forDaoPackage()")
     public void beforeAddAccountAdvice(){
         System.out.println("\n=======>>>> Executing @Before advice on method");
+    }
+
+    @Before("forDaoPackage()")
+    public void performAPIAnalytics(){
+        System.out.println("\n======>>>> Performing API Analytics");
     }
 }
