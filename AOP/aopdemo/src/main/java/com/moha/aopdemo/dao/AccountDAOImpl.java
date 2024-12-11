@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 public class AccountDAOImpl implements AccountDAO{
 
     @Override
-    public void addAccount(Account account) {
+    public void addAccount(Account account, Boolean vipFlag) {
         System.out.println(getClass()+": Doing my DB work - Adding an account.");
     }
 }

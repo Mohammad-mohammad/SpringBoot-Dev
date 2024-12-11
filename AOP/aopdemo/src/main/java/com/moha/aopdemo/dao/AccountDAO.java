@@ -4,5 +4,5 @@ import com.moha.aopdemo.Account;
 
 public interface AccountDAO {
 
-    void addAccount(Account account);
+    void addAccount(Account account, Boolean vipFlag);
 }
