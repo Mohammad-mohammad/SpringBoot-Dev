@@ -27,6 +27,15 @@ public class AopdemoApplication {
 		accountDAO.addAccount();
 
 		membershipDAO.addAccount();
+
+		// Result:
+		/*
+			=======>>>> Executing @Before advice on AddAccount()
+			class com.moha.aopdemo.dao.AccountDAOImpl: Doing my DB work - Adding an account.
+
+			=======>>>> Executing @Before advice on AddAccount()
+			class com.moha.aopdemo.dao.MembershipDAOImpl: Doing my DB work - Adding an membership.
+		*/
 	}
 
 }
