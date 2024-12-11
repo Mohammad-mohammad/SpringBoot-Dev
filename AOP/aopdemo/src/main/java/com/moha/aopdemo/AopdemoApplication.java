@@ -31,9 +31,11 @@ public class AopdemoApplication {
 
 		// Result:
 		/*
+		    =======>>>> Executing @Before advice on method
+		    class com.moha.aopdemo.dao.AccountDAOImpl: Doing my DB work - Adding an account.
+			
 			=======>>>> Executing @Before advice on method
-			class com.moha.aopdemo.dao.AccountDAOImpl: Doing my DB work - Adding an account.
-		   	class com.moha.aopdemo.dao.MembershipDAOImpl: Doing my DB work - Adding a membership.
+		   	class com.moha.aopdemo.dao.MembershipDAOImpl: Doing my DB work - Adding an membership.
 		*/
 	}
 
