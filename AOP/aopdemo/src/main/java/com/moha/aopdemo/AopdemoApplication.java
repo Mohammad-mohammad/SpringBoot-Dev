@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class AopdemoApplication {
 
@@ -18,8 +20,17 @@ public class AopdemoApplication {
 	public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO){
 		return runner -> {
 
-			demoTheBeforeAdvice(accountDAO, membershipDAO);
+			//demoTheBeforeAdvice(accountDAO, membershipDAO);
+
+			demoTheAfterReturningAdvice(accountDAO);
 		};
+	}
+
+	private void demoTheAfterReturningAdvice(AccountDAO accountDAO) {
+		List<Account> accounts = accountDAO.findAccounts();
+		// display the accounts
+		System.out.println("\n\nMain program: demoTheAfterReturningAdvice: ");
+		System.out.println(accounts);
 	}
 
 	private void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO) {
@@ -47,42 +58,16 @@ public class AopdemoApplication {
 		======>>>> Logging to Cloud in async manner
 
 		=======>>>> Executing @Before advice on method
-		Method: void com.moha.aopdemo.dao.AccountDAOImpl.addAccount(Account,Boolean)
-		Argument: com.moha.aopdemo.Account@7dd00705
-		Account name: Mohammad
-		Account level: Master
-		Argument: true
+		Method: List com.moha.aopdemo.dao.AccountDAOImpl.findAccounts()
 
 		======>>>> Performing API Analytics
-		class com.moha.aopdemo.dao.AccountDAOImpl: Doing my DB work - Adding an account.
+		Method: AccountDAOImpl.findAccounts()
+		Returning Value: [Account{name='John', level='Silver'}, Account{name='Mary', level='Gold'}, Account{name='Peter', level='Platinum'}]
 
-		======>>>> Logging to Cloud in async manner
 
-		=======>>>> Executing @Before advice on method
-		Method: boolean com.moha.aopdemo.dao.AccountDAOImpl.doWork()
+		Main program: demoTheAfterReturningAdvice:
+		[Account{name='John', level='Silver'}, Account{name='Mary', level='Gold'}, Account{name='Peter', level='Platinum'}]
 
-		======>>>> Performing API Analytics
-		class com.moha.aopdemo.dao.AccountDAOImpl: Doing my work.
-		class com.moha.aopdemo.dao.AccountDAOImpl: set Name
-		class com.moha.aopdemo.dao.AccountDAOImpl: set Service code
-		class com.moha.aopdemo.dao.AccountDAOImpl: get Name
-		class com.moha.aopdemo.dao.AccountDAOImpl: get Service code
-
-		======>>>> Logging to Cloud in async manner
-
-		=======>>>> Executing @Before advice on method
-		Method: boolean com.moha.aopdemo.dao.MembershipDAOImpl.addAccount()
-
-		======>>>> Performing API Analytics
-		class com.moha.aopdemo.dao.MembershipDAOImpl: Doing my DB work - Adding an membership.
-
-		======>>>> Logging to Cloud in async manner
-
-		=======>>>> Executing @Before advice on method
-		Method: void com.moha.aopdemo.dao.MembershipDAOImpl.goToSleep()
-
-		======>>>> Performing API Analytics
-		class com.moha.aopdemo.dao.MembershipDAOImpl: I am going to sleep now...
 		*/
 	}
 
