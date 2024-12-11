@@ -40,10 +40,14 @@ public class AopdemoApplication {
 
 		// Result:
 		/*
+		======>>>> Logging to Cloud in async manner
+
 		=======>>>> Executing @Before advice on method
 
 		======>>>> Performing API Analytics
 		class com.moha.aopdemo.dao.AccountDAOImpl: Doing my DB work - Adding an account.
+
+		======>>>> Logging to Cloud in async manner
 
 		=======>>>> Executing @Before advice on method
 
@@ -54,16 +58,19 @@ public class AopdemoApplication {
 		class com.moha.aopdemo.dao.AccountDAOImpl: get Name
 		class com.moha.aopdemo.dao.AccountDAOImpl: get Service code
 
+		======>>>> Logging to Cloud in async manner
+
 		=======>>>> Executing @Before advice on method
 
 		======>>>> Performing API Analytics
 		class com.moha.aopdemo.dao.MembershipDAOImpl: Doing my DB work - Adding an membership.
 
+		======>>>> Logging to Cloud in async manner
+
 		=======>>>> Executing @Before advice on method
 
 		======>>>> Performing API Analytics
 		class com.moha.aopdemo.dao.MembershipDAOImpl: I am going to sleep now...
-
 		*/
 	}
 
