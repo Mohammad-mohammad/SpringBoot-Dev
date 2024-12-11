@@ -25,6 +25,10 @@ public class AopdemoApplication {
 	private void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO) {
 
 		Account account = new Account();
+		account.setName("Mohammad");
+		account.setLevel("Master");
+
+
 		accountDAO.addAccount(account, true);
 		accountDAO.doWork();
 
@@ -43,6 +47,11 @@ public class AopdemoApplication {
 		======>>>> Logging to Cloud in async manner
 
 		=======>>>> Executing @Before advice on method
+		Method: void com.moha.aopdemo.dao.AccountDAOImpl.addAccount(Account,Boolean)
+		Argument: com.moha.aopdemo.Account@7dd00705
+		Account name: Mohammad
+		Account level: Master
+		Argument: true
 
 		======>>>> Performing API Analytics
 		class com.moha.aopdemo.dao.AccountDAOImpl: Doing my DB work - Adding an account.
@@ -50,6 +59,7 @@ public class AopdemoApplication {
 		======>>>> Logging to Cloud in async manner
 
 		=======>>>> Executing @Before advice on method
+		Method: boolean com.moha.aopdemo.dao.AccountDAOImpl.doWork()
 
 		======>>>> Performing API Analytics
 		class com.moha.aopdemo.dao.AccountDAOImpl: Doing my work.
@@ -61,6 +71,7 @@ public class AopdemoApplication {
 		======>>>> Logging to Cloud in async manner
 
 		=======>>>> Executing @Before advice on method
+		Method: boolean com.moha.aopdemo.dao.MembershipDAOImpl.addAccount()
 
 		======>>>> Performing API Analytics
 		class com.moha.aopdemo.dao.MembershipDAOImpl: Doing my DB work - Adding an membership.
@@ -68,6 +79,7 @@ public class AopdemoApplication {
 		======>>>> Logging to Cloud in async manner
 
 		=======>>>> Executing @Before advice on method
+		Method: void com.moha.aopdemo.dao.MembershipDAOImpl.goToSleep()
 
 		======>>>> Performing API Analytics
 		class com.moha.aopdemo.dao.MembershipDAOImpl: I am going to sleep now...
