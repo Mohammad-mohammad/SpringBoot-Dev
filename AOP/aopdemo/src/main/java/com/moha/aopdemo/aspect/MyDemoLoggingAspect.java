@@ -20,8 +20,17 @@ public class MyDemoLoggingAspect {
     @Around("execution(* com.moha.aopdemo.service.*.getFortune(..))")
     public Object aroundGetFortune(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
         System.out.println("\n=======>>>> Executing @Around advice on method "+ proceedingJoinPoint.getSignature().toShortString());
+
         long begin = System.currentTimeMillis();
-        Object result = proceedingJoinPoint.proceed();
+        Object result = null;
+
+        try {
+            result= proceedingJoinPoint.proceed();
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+            result= "Major accident! But no worries, your private AOP helicopter is on the way.";
+        }
         long end= System.currentTimeMillis();
 
         long duration = end - begin;

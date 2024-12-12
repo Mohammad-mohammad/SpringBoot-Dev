@@ -31,9 +31,36 @@ public class AopdemoApplication {
 
 			//demoTheAfterAdvice(accountDAO);
 
-			demoTheAroundAdvice(trafficFortuneService);
+			//demoTheAroundAdvice(trafficFortuneService);
+
+			demoTheAroundAdviceHandleException(trafficFortuneService);
 
 		};
+	}
+
+	private void demoTheAroundAdviceHandleException(TrafficFortuneService trafficFortuneService) {
+		System.out.println("\nMain Program: demoTheAroundAdviceHandleException");
+		System.out.println("Calling getFortune()");
+
+		boolean tripWire = true;
+		System.out.println("\nMy fortune is: "+ trafficFortuneService.getFortune(tripWire));
+
+		System.out.println("Finished");
+
+		// Result:
+		/*
+			Main Program: demoTheAroundAdviceHandleException
+			Calling getFortune()
+
+			=======>>>> Executing @Around advice on method TrafficFortuneServiceImpl.getFortune(..)
+			Major accident! Highway is closed!
+
+			=====>> Duration: 0.007 seconds
+
+			My fortune is: Major accident! But no worries, your private AOP helicopter is on the way.
+			Finished
+
+		*/
 	}
 
 	private void demoTheAroundAdvice(TrafficFortuneService trafficFortuneService) {
