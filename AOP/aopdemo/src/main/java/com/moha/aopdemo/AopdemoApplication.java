@@ -22,8 +22,27 @@ public class AopdemoApplication {
 
 			//demoTheBeforeAdvice(accountDAO, membershipDAO);
 
-			demoTheAfterReturningAdvice(accountDAO);
+			//demoTheAfterReturningAdvice(accountDAO);
+
+			demoTheAfterThrowingAdvice(accountDAO);
+
 		};
+	}
+
+	private void demoTheAfterThrowingAdvice(AccountDAO accountDAO) {
+		List<Account> accounts = null;
+
+		try{
+			boolean tripWire = true;
+			accounts= accountDAO.findAccounts(tripWire);
+		}
+		catch (Exception e){
+			System.out.println("\n\nMain Program: ... caught the exception "+ e);
+		}
+
+		// display the accounts
+		System.out.println("\n\nMain program: demoTheAfterThrowingAdvice: ");
+		System.out.println(accounts);
 	}
 
 	private void demoTheAfterReturningAdvice(AccountDAO accountDAO) {
@@ -58,16 +77,20 @@ public class AopdemoApplication {
 		======>>>> Logging to Cloud in async manner
 
 		=======>>>> Executing @Before advice on method
-		Method: List com.moha.aopdemo.dao.AccountDAOImpl.findAccounts()
+		Method: List com.moha.aopdemo.dao.AccountDAOImpl.findAccounts(boolean)
+		Argument: true
 
 		======>>>> Performing API Analytics
-		Method: AccountDAOImpl.findAccounts()
-		Returning Value: [Account{name='John', level='Silver'}, Account{name='Mary', level='Gold'}, Account{name='Peter', level='Platinum'}]
+
+		=======>>>> Executing @AfterThrowing advice on method AccountDAOImpl.findAccounts(..)
+		The Exception is: java.lang.RuntimeException: No soup for you!!
 
 
-		Main program: demoTheAfterReturningAdvice:
-		[Account{name='JOHN', level='Silver'}, Account{name='MARY', level='Gold'}, Account{name='PETER', level='Platinum'}]
-		, Account{name='Peter', level='Platinum'}]
+		Main Program: ... caught the exception java.lang.RuntimeException: No soup for you!!
+
+
+		Main program: demoTheAfterThrowingAdvice:
+		null
 
 		*/
 	}

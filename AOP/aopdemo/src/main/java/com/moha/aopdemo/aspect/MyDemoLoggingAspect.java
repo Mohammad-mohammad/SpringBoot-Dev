@@ -3,10 +3,7 @@ package com.moha.aopdemo.aspect;
 import com.moha.aopdemo.Account;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -18,6 +15,17 @@ import java.util.List;
 @Component
 @Order(2)
 public class MyDemoLoggingAspect {
+
+    @AfterThrowing(
+            pointcut = "execution(* com.moha.aopdemo.dao.AccountDAO.findAccounts(..))",
+            throwing = "theExc"
+    )
+    public void afterThrowingFindAccountAdvice(JoinPoint joinPoint, Throwable theExc){
+
+        System.out.println("\n=======>>>> Executing @AfterThrowing advice on method "+ joinPoint.getSignature().toShortString());
+
+        System.out.println("The Exception is: "+ theExc);
+    }
 
     @AfterReturning(
             pointcut = "execution(* com.moha.aopdemo.dao.AccountDAO.findAccounts(..))",
