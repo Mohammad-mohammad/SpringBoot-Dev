@@ -33,9 +33,38 @@ public class AopdemoApplication {
 
 			//demoTheAroundAdvice(trafficFortuneService);
 
-			demoTheAroundAdviceHandleException(trafficFortuneService);
+			//demoTheAroundAdviceHandleException(trafficFortuneService);
+
+			demoThrAroundAdviceRethrowException(trafficFortuneService);
 
 		};
+	}
+
+	private void demoThrAroundAdviceRethrowException(TrafficFortuneService trafficFortuneService) {
+		System.out.println("\nMain Program: demoThrAroundAdviceRethrowException");
+		System.out.println("Calling getFortune()");
+
+		boolean tripWire = true;
+		System.out.println("\nMy fortune is: "+ trafficFortuneService.getFortune(tripWire));
+
+		System.out.println("Finished");
+
+		// Result:
+		/*
+			Main Program: demoThrAroundAdviceRethrowException
+			Calling getFortune()
+
+			=======>>>> Executing @Around advice on method TrafficFortuneServiceImpl.getFortune(..)
+			Major accident! Highway is closed!
+			2024-12-12T11:39:15.444+01:00 ERROR 7784 --- [aopdemo] [           main] o.s.boot.SpringApplication               : Application run failed
+
+			java.lang.RuntimeException: Major accident! Highway is closed!
+				at com.moha.aopdemo.service.TrafficFortuneServiceImpl.getFortune(TrafficFortuneServiceImpl.java:23) ~[classes/:na]
+				at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103) ~[na:na]
+				at java.base/java.lang.reflect.Method.invoke(Method.java:580) ~[na:na]
+
+
+		*/
 	}
 
 	private void demoTheAroundAdviceHandleException(TrafficFortuneService trafficFortuneService) {
