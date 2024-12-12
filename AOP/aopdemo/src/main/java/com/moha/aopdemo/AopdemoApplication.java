@@ -2,6 +2,7 @@ package com.moha.aopdemo;
 
 import com.moha.aopdemo.dao.AccountDAO;
 import com.moha.aopdemo.dao.MembershipDAO;
+import com.moha.aopdemo.service.TrafficFortuneService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,7 +18,9 @@ public class AopdemoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO){
+	public CommandLineRunner commandLineRunner(AccountDAO accountDAO,
+											   MembershipDAO membershipDAO,
+											   TrafficFortuneService trafficFortuneService){
 		return runner -> {
 
 			//demoTheBeforeAdvice(accountDAO, membershipDAO);
@@ -26,9 +29,33 @@ public class AopdemoApplication {
 
 			//demoTheAfterThrowingAdvice(accountDAO);
 
-			demoTheAfterAdvice(accountDAO);
+			//demoTheAfterAdvice(accountDAO);
+
+			demoTheAroundAdvice(trafficFortuneService);
 
 		};
+	}
+
+	private void demoTheAroundAdvice(TrafficFortuneService trafficFortuneService) {
+		System.out.println("\nMain Program: demoTheAroundAdvice");
+		System.out.println("Calling getFortune()");
+		System.out.println("\nMy fortune is: "+ trafficFortuneService.getFortune());
+		System.out.println("Finished");
+
+
+		// Result:
+		/*
+		Main Program: demoTheAroundAdvice
+		Calling getFortune()
+
+		=======>>>> Executing @Around advice on method TrafficFortuneServiceImpl.getFortune()
+
+		=====>> Duration: 5.013 seconds
+
+		My fortune is: Expect heavy traffics this morning
+		Finished
+
+		*/
 	}
 
 	private void demoTheAfterAdvice(AccountDAO accountDAO) {
@@ -90,30 +117,6 @@ public class AopdemoApplication {
 		membershipDAO.addAccount();
 		membershipDAO.goToSleep();
 
-
-		// Result:
-		/*
-		======>>>> Logging to Cloud in async manner
-
-		=======>>>> Executing @Before advice on method
-		Method: List com.moha.aopdemo.dao.AccountDAOImpl.findAccounts(boolean)
-		Argument: true
-
-		======>>>> Performing API Analytics
-
-		=======>>>> Executing @AfterThrowing advice on method AccountDAOImpl.findAccounts(..)
-		The Exception is: java.lang.RuntimeException: No soup for you!!
-
-		=======>>>> Executing @AfterFinally advice on method AccountDAOImpl.findAccounts(..)
-
-
-		Main Program: ... caught the exception java.lang.RuntimeException: No soup for you!!
-
-
-		Main program: demoTheAfterThrowingAdvice:
-		null
-
-		*/
 	}
 
 }
