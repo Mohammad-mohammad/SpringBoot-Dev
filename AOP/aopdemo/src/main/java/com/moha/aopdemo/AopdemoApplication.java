@@ -24,9 +24,28 @@ public class AopdemoApplication {
 
 			//demoTheAfterReturningAdvice(accountDAO);
 
-			demoTheAfterThrowingAdvice(accountDAO);
+			//demoTheAfterThrowingAdvice(accountDAO);
+
+			demoTheAfterAdvice(accountDAO);
 
 		};
+	}
+
+	private void demoTheAfterAdvice(AccountDAO accountDAO) {
+		List<Account> accounts = null;
+
+		try{
+			boolean tripWire = true;
+			accounts= accountDAO.findAccounts(tripWire);
+		}
+		catch (Exception e){
+			System.out.println("\n\nMain Program: ... caught the exception "+ e);
+		}
+
+		// display the accounts
+		System.out.println("\n\nMain program: demoTheAfterThrowingAdvice: ");
+		System.out.println(accounts);
+
 	}
 
 	private void demoTheAfterThrowingAdvice(AccountDAO accountDAO) {
@@ -84,6 +103,8 @@ public class AopdemoApplication {
 
 		=======>>>> Executing @AfterThrowing advice on method AccountDAOImpl.findAccounts(..)
 		The Exception is: java.lang.RuntimeException: No soup for you!!
+
+		=======>>>> Executing @AfterFinally advice on method AccountDAOImpl.findAccounts(..)
 
 
 		Main Program: ... caught the exception java.lang.RuntimeException: No soup for you!!
